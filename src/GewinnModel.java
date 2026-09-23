@@ -11,4 +11,30 @@ public class GewinnModel {
     public GewinnModel(){
         this.gesamtPunkte = 30;
     }
+
+    public int getGesamtPunkte() {
+        return gesamtPunkte;
+    }
+
+    public int getRundenErgebnis() {
+        return rundenErgebnis;
+    }
+
+    public int getComputerZahl() {
+        return computerZahl;
+    }
+
+    public void berechneComputerZahl(){
+
+    }
+    public void berechneRunde(int spielerZahl){
+
+    }
+    public boolean hatGewonnen(){
+        return true;
+    }
+    public boolean hatVerloren(){
+        return false;
+    }
+
 }
