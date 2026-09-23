@@ -25,15 +25,31 @@ public class GewinnModel {
     }
 
     public void berechneComputerZahl(){
-
+        this.computerZahl = (int)(Math.random() * 9 + 1);
     }
+
     public void berechneRunde(int spielerZahl){
+        if(spielerZahl == this.computerZahl){
+            this.rundenErgebnis = 20;
+        } else if (spielerZahl == this.computerZahl + 1 || spielerZahl == this.computerZahl - 1) {
+            this.rundenErgebnis = 5;
+        } else {
+            this.rundenErgebnis = -10;
+        }
+        this.gesamtPunkte += this.rundenErgebnis;
 
     }
+
     public boolean hatGewonnen(){
-        return true;
+        if (this.gesamtPunkte >= 100){
+            return true;
+        }
+        return false;
     }
     public boolean hatVerloren(){
+        if (this.gesamtPunkte <= 0){
+            return true;
+        }
         return false;
     }
 
