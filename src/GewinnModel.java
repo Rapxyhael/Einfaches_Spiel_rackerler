@@ -29,6 +29,7 @@ public class GewinnModel {
     }
 
     public void berechneRunde(int spielerZahl){
+        this.spielerZahl = spielerZahl;
         if(spielerZahl == this.computerZahl){
             this.rundenErgebnis = 20;
         } else if (spielerZahl == this.computerZahl + 1 || spielerZahl == this.computerZahl - 1) {
