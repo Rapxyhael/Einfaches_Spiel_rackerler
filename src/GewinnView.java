@@ -35,15 +35,15 @@ public class GewinnView extends JFrame {
         this.gesamtPunkteLabel.setOpaque(true);
         this.gesamtPunkteLabel.setBackground(Color.WHITE);
 
-        JLabel spielerUeberschrift = new JLabel("Deine Zahl:", JLabel.CENTER);
-        JLabel computerUeberschrift = new JLabel("Computer:", JLabel.CENTER);
+        JLabel spielerTitel = new JLabel("Deine Zahl:", JLabel.CENTER);
+        JLabel computerTitel = new JLabel("Computer:", JLabel.CENTER);
 
         obenPanel.add(rundenTitel);
         obenPanel.add(gesamtTitel);
         obenPanel.add(this.rundenErgebnisLabel);
         obenPanel.add(this.gesamtPunkteLabel);
-        obenPanel.add(spielerUeberschrift);
-        obenPanel.add(computerUeberschrift);
+        obenPanel.add(spielerTitel);
+        obenPanel.add(computerTitel);
 
 
 
@@ -62,9 +62,12 @@ public class GewinnView extends JFrame {
         mittePanel.add(this.spielerZahlFeld);
         mittePanel.add(this.computerZahlFeld);
 
+
         JPanel untenPanel = new JPanel(new FlowLayout());
+
         this.nochEinmalKnopf = new JButton("Noch einmal!");
         this.nochEinmalKnopf.setActionCommand("nochmal");
+
         untenPanel.add(this.nochEinmalKnopf);
 
         this.add(obenPanel, BorderLayout.NORTH);
@@ -88,7 +91,6 @@ public class GewinnView extends JFrame {
     public void setComputerZahl(String text) {
         this.computerZahlFeld.setText(text);
     }
-
     public void setRundenErgebnis(String text) {
         this.rundenErgebnisLabel.setText(text);
     }
