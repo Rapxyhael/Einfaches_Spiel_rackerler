@@ -42,11 +42,15 @@ public class GewinnController implements ActionListener {
                 this.view.setRundenErgebnis("" + this.model.getRundenErgebnis()); //Bei negativem Ergebnis
             }
             this.view.setGesamtPunkte("" + this.model.getGesamtPunkte());
+            this.view.setEingabeAn(false);          //Eingabe sperren nach der Runde
+            this.view.setNochEinmalKnopfAn(true);        //Noch einmal Button freigeben
 
         } else if (e.getActionCommand().equals("nochmal")) {       //Checkt auf den nochmal Knopf und setzt halt alles zurück
             this.view.setSpielerZahl("");
             this.view.setComputerZahl("");
             this.view.setRundenErgebnis("Tippe eine zahl von 1 bis 9");
+            this.view.setEingabeAn(true);           //Eingabe wieder freigeben
+            this.view.setNochEinmalKnopfAn(false);       //Button wieder sperren
         }
     }
 

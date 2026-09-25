@@ -67,6 +67,7 @@ public class GewinnView extends JFrame {
 
         this.nochEinmalKnopf = new JButton("Noch einmal!");
         this.nochEinmalKnopf.setActionCommand("nochmal");
+        this.nochEinmalKnopf.setEnabled(false);
 
         untenPanel.add(this.nochEinmalKnopf);
 
@@ -97,5 +98,13 @@ public class GewinnView extends JFrame {
 
     public void setGesamtPunkte(String text) {
         this.gesamtPunkteLabel.setText(text);
+    }
+
+    public void setEingabeAn(boolean an) {
+        this.spielerZahlFeld.setEnabled(an);
+    }
+
+    public void setNochEinmalKnopfAn(boolean an) {
+        this.nochEinmalKnopf.setEnabled(an);
     }
 }
