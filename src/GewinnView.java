@@ -107,4 +107,9 @@ public class GewinnView extends JFrame {
     public void setNochEinmalKnopfAn(boolean an) {
         this.nochEinmalKnopf.setEnabled(an);
     }
+
+    public void setLabelFarbe(Color farbe) {
+        this.rundenErgebnisLabel.setBackground(farbe);
+        this.gesamtPunkteLabel.setBackground(farbe);
+    }
 }

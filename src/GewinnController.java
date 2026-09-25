@@ -1,5 +1,6 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.Color;
 
 public class GewinnController implements ActionListener {
 
@@ -45,12 +46,25 @@ public class GewinnController implements ActionListener {
             this.view.setEingabeAn(false);          //Eingabe sperren nach der Runde
             this.view.setNochEinmalKnopfAn(true);        //Noch einmal Button freigeben
 
+            if (this.model.hatGewonnen()) {                     //Wahnsinnig unnötig und Code Verdopplung aber es entsteht zu 100% ein Merge Konflikt
+                this.view.setLabelFarbe(Color.GREEN);
+            } else if (this.model.hatVerloren()) {
+                this.view.setLabelFarbe(Color.RED);
+            } else if (this.model.getRundenErgebnis() > 0) {
+                this.view.setLabelFarbe(Color.GREEN);
+            } else if (this.model.getRundenErgebnis() < 0) {
+                this.view.setLabelFarbe(Color.RED);
+            } else {
+                this.view.setLabelFarbe(Color.WHITE);
+            }
+
         } else if (e.getActionCommand().equals("nochmal")) {       //Checkt auf den nochmal Knopf und setzt halt alles zurück
             this.view.setSpielerZahl("");
             this.view.setComputerZahl("");
             this.view.setRundenErgebnis("Tippe eine zahl von 1 bis 9");
             this.view.setEingabeAn(true);           //Eingabe wieder freigeben
             this.view.setNochEinmalKnopfAn(false);       //Button wieder sperren
+            this.view.setLabelFarbe(Color.WHITE);
         }
     }
 
