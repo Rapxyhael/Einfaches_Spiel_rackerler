@@ -98,4 +98,9 @@ public class GewinnView extends JFrame {
     public void setGesamtPunkte(String text) {
         this.gesamtPunkteLabel.setText(text);
     }
+
+    public void setLabelFarbe(Color farbe) {
+        this.rundenErgebnisLabel.setBackground(farbe);
+        this.gesamtPunkteLabel.setBackground(farbe);
+    }
 }
