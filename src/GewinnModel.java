@@ -1,5 +1,8 @@
 /**
- *
+ * Model des Spiels
+ * Verwaltet den Punktestand und berechnet die Computerzahl sowie das Ergebnis jeder Runde
+ * @author Raphael Ackerler
+ * @version 2.0
  */
 public class GewinnModel {
 
@@ -24,7 +27,7 @@ public class GewinnModel {
         return computerZahl;
     }
 
-    public void berechneComputerZahl(){
+    public void berechneComputerZahl(){         //berechnet Mittels Math.random eine Zahl von 1-9
         this.computerZahl = (int)(Math.random() * 9 + 1);
     }
 
@@ -32,7 +35,7 @@ public class GewinnModel {
         this.spielerZahl = spielerZahl;
         if(spielerZahl == this.computerZahl){
             this.rundenErgebnis = 20;
-        } else if (spielerZahl == this.computerZahl + 1 || spielerZahl == this.computerZahl - 1) {
+        } else if (spielerZahl == this.computerZahl + 1 || spielerZahl == this.computerZahl - 1) {  //Schaut, ob die Spieler Zahl um 1 in der Nähe der Computer Zahl ist
             this.rundenErgebnis = 5;
         } else {
             this.rundenErgebnis = -10;

@@ -2,6 +2,12 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 
+/**
+ * View des Spiels
+ * Zeigt das GUI an und beinhaltet Methoden zum Anzeigen, ändern und um Eingaben auszulesen.
+ * @author Raphael Ackerler
+ * @version 2.0
+ */
 public class GewinnView extends JFrame {
 
     private JLabel rundenErgebnisLabel;
@@ -15,10 +21,10 @@ public class GewinnView extends JFrame {
         this.setSize(500, 300);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
-        this.setLayout(new BorderLayout());
+        this.setLayout(new BorderLayout()); //Zur Übersicht
 
 
-        JPanel obenPanel = new JPanel(new GridLayout(3, 2, 5, 5));
+        JPanel obenPanel = new JPanel(new GridLayout(3, 2, 5, 5));  //Erstes von 3 Panel
 
         JLabel rundenTitel = new JLabel("Rundenergebnis:", JLabel.CENTER);
 
@@ -38,7 +44,7 @@ public class GewinnView extends JFrame {
         JLabel spielerTitel = new JLabel("Deine Zahl:", JLabel.CENTER);
         JLabel computerTitel = new JLabel("Computer:", JLabel.CENTER);
 
-        obenPanel.add(rundenTitel);
+        obenPanel.add(rundenTitel);                //Alle Komponenten werden hinzugefügt
         obenPanel.add(gesamtTitel);
         obenPanel.add(this.rundenErgebnisLabel);
         obenPanel.add(this.gesamtPunkteLabel);
@@ -47,8 +53,8 @@ public class GewinnView extends JFrame {
 
 
 
-        JPanel mittePanel = new JPanel(new GridLayout(1, 2, 10, 0));
-        mittePanel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+        JPanel mittePanel = new JPanel(new GridLayout(1, 2, 10, 0));        //Das mittlere Panel das die TextFelder hält 3 Attribut macht den Abstand zwischen den Feldern
+        mittePanel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));   //BorderFactory bringt einfach einen leichten Außenabstand an
 
         this.spielerZahlFeld = new JTextField();
         this.spielerZahlFeld.setHorizontalAlignment(JTextField.CENTER);
@@ -63,7 +69,7 @@ public class GewinnView extends JFrame {
         mittePanel.add(this.computerZahlFeld);
 
 
-        JPanel untenPanel = new JPanel(new FlowLayout());
+        JPanel untenPanel = new JPanel(new FlowLayout());   //Letztes Panel das den Knopf hält
 
         this.nochEinmalKnopf = new JButton("Noch einmal!");
         this.nochEinmalKnopf.setActionCommand("nochmal");
@@ -81,10 +87,11 @@ public class GewinnView extends JFrame {
         this.nochEinmalKnopf.addActionListener(listener);
     }
 
-    public String getSpielerZahl() {
+    public String getSpielerZahl() {            //Damit der Controller Zugriff auf die eingegebene Zahl hat.
         return this.spielerZahlFeld.getText();
     }
 
+    //Setter Methoden die es dem Controller ermöglichen alles Mögliche zu verändern.
     public void setSpielerZahl(String text) {
         this.spielerZahlFeld.setText(text);
     }

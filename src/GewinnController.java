@@ -2,6 +2,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.Color;
 
+/**
+ * Controller des Spiels
+ * Verbindet Model und View reagiert auf Benutzereingaben und aktualisiert das GUI nach jeder runde
+ * @author Raphael Ackerler
+ * @version 2.0
+ */
 public class GewinnController implements ActionListener {
 
     private GewinnModel model;
@@ -43,7 +49,7 @@ public class GewinnController implements ActionListener {
                 this.view.setRundenErgebnis("" + this.model.getRundenErgebnis()); //Bei negativem Ergebnis
             }
             this.view.setGesamtPunkte("" + this.model.getGesamtPunkte());
-            this.view.setEingabeAn(false);          //Eingabe sperren nach der Runde
+            this.view.setEingabeAn(false);               //Eingabe sperren nach der Runde
             this.view.setNochEinmalKnopfAn(true);        //Noch einmal Button freigeben
 
             if (this.model.hatGewonnen()) {                     //Wahnsinnig unnötig und Code Verdopplung aber es entsteht zu 100% ein Merge Konflikt
