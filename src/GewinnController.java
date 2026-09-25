@@ -16,19 +16,37 @@ public class GewinnController implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getActionCommand().equals("eingabe")) {   //Checkt auf Enter, nochmal erst beim nächsten schritt
-            int spielerZahl = Integer.parseInt(this.view.getSpielerZahl()); //holt eingegebene Zahl
+        if (e.getActionCommand().equals("eingabe")) {   //Checkt auf Enter
+            int spielerZahl;
+            try {
+                spielerZahl = Integer.parseInt(this.view.getSpielerZahl().trim());
+            } catch (NumberFormatException ex) {                    //Catcht falls keine Nummer eingegeben wurde
+                this.view.setRundenErgebnis("Ungültige Eingabe");
+                return;
+            }
+            if (spielerZahl < 1 || spielerZahl > 9) {
+                this.view.setRundenErgebnis("Nur 1 bis 9!");
+                return;
+            }
             this.model.berechneComputerZahl();
             this.model.berechneRunde(spielerZahl);
 
             this.view.setComputerZahl("" + this.model.getComputerZahl()); //zeigt die ComputerZahl an
-            if (this.model.getRundenErgebnis() > 0) {
+            if (this.model.hatGewonnen()) {
+                this.view.setRundenErgebnis("Gewonnen");        //Falls das gesamte Spiel verloren
+            } else if (this.model.hatVerloren()) {
+                this.view.setRundenErgebnis("Verloren");        //Falls das gesamte Spiel gewonnen
+            } else if (this.model.getRundenErgebnis() > 0) {
                 this.view.setRundenErgebnis("+" + this.model.getRundenErgebnis()); //Bei positivem Ergebnis
-
             } else {
-                this.view.setRundenErgebnis("" + this.model.getRundenErgebnis()); //Bei minus Zahlen
+                this.view.setRundenErgebnis("" + this.model.getRundenErgebnis()); //Bei negativem Ergebnis
             }
             this.view.setGesamtPunkte("" + this.model.getGesamtPunkte());
+
+        } else if (e.getActionCommand().equals("nochmal")) {       //Checkt auf den nochmal Knopf und setzt halt alles zurück
+            this.view.setSpielerZahl("");
+            this.view.setComputerZahl("");
+            this.view.setRundenErgebnis("Tippe eine zahl von 1 bis 9");
         }
     }
 
